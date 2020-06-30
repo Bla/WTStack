@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wt.WTSpringPractice.domain.Tablee;
 
 @RestController
-public class TableEndpoint {
+public class TableeEndpoint {
 	
 	@Autowired
 	private TableeRepository tableeRepository;
