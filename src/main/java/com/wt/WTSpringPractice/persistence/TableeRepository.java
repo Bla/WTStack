@@ -1,4 +1,4 @@
-package com.wt.WTSpringPractice.rest;
+package com.wt.WTSpringPractice.persistence;
 
 import org.springframework.data.repository.CrudRepository;
 import com.wt.WTSpringPractice.domain.Tablee;
