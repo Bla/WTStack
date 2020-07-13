@@ -1,4 +1,4 @@
-package com.wt.WTSpringPractice.persistence;
+package com.wt.WTSpringPractice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import com.wt.WTSpringPractice.domain.Tablee;
 public class TableeService {
 	
 	@Autowired
-	private TableeRepository tableeRepository;
+	TableeRepository tableeRepository;
 	
 	public Tablee save(Tablee tablee){
 		return tableeRepository.save(tablee);

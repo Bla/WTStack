@@ -7,17 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wt.WTSpringPractice.controller.ChairService;
 import com.wt.WTSpringPractice.domain.Chair;
-import com.wt.WTSpringPractice.persistence.ChairRepository;
 
 @RestController
 public class ChairEndpoint {
 	
 	@Autowired
-	private ChairRepository chairRepository;
+	ChairService chairService;
 	
 	@GetMapping("/chair/test")
 	public String testing() {
@@ -34,13 +33,13 @@ public class ChairEndpoint {
 	}
 	
 	@GetMapping("/chair/all")
-	public @ResponseBody Iterable<Chair> getAllChairs() {
-		return chairRepository.findAll();
+	public Iterable<Chair> getAllChairs() {
+		return chairService.findAll();
 	}
 	
 	@PostMapping(path = "/chair/add", consumes = "application/json", produces = "text/plain")
 	public String addChair(@RequestBody Chair chair) {
-		chairRepository.save(chair);
+		chairService.save(chair);
 		return "Chair added";
 	}
 }

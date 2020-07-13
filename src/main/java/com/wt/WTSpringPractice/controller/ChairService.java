@@ -1,4 +1,4 @@
-package com.wt.WTSpringPractice.persistence;
+package com.wt.WTSpringPractice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,14 +11,14 @@ import com.wt.WTSpringPractice.domain.Chair;
 public class ChairService {
 	
 	@Autowired
-	private ChairRepository chairRepository;
+	ChairRepository chairRepository;
 	
 	public Chair save(Chair chair){
 		return chairRepository.save(chair);
 	}
 	
-	public Iterable <Chair> findAll(){
-		Iterable <Chair> result = chairRepository.findAll();
+	public Iterable<Chair> findAll(){
+		Iterable<Chair> result = chairRepository.findAll();
 		return result;
 	}
 }

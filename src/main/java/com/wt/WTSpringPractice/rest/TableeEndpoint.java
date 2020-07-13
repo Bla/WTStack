@@ -9,17 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.wt.WTSpringPractice.controller.TableeService;
 import com.wt.WTSpringPractice.domain.Tablee;
-import com.wt.WTSpringPractice.persistence.TableeRepository;
 
 @RestController
 public class TableeEndpoint {
 
 	@Autowired
-	private TableeRepository tableeRepository;
+	TableeService tableeService;
 
 	@GetMapping("/tablee/test")
 	public String testing() {
@@ -41,13 +40,13 @@ public class TableeEndpoint {
 	}
 
 	@GetMapping("/tablee/all")
-	public @ResponseBody Iterable<Tablee> getAllTablees() {
-		return tableeRepository.findAll();
+	public Iterable<Tablee> getAllTablees() {
+		return tableeService.findAll();
 	}
 	
 	@PostMapping(path = "/tablee/add", consumes = "application/json", produces = "text/plain")
 	public String addTablee(@RequestBody Tablee tablee) {
-		tableeRepository.save(tablee);
+		tableeService.save(tablee);
 		return "Tablee added";
 	}
 
